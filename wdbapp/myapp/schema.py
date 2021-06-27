@@ -1,7 +1,7 @@
 import graphene
 from graphene_django import DjangoObjectType
 
-from myapp.models import UserModel, CategoryModel
+from myapp.models import UserModel, CategoryModel #, ProductModel
 
 
 class UserType(DjangoObjectType):
@@ -12,6 +12,10 @@ class UserType(DjangoObjectType):
 class CategoryType(DjangoObjectType):
     class Meta:
         model = CategoryModel
+
+# class ProductType(DjangoObjectType):
+#     class Meta:
+#         model = ProductModel
 
 
 class Query(graphene.ObjectType):
@@ -26,6 +30,13 @@ class Query(graphene.ObjectType):
 
     def resolve_categorys(self, info):
         return CategoryModel.objects.all()
+
+
+# class Query(graphene.ObjectType):
+#     products = graphene.List(ProductType)
+
+#     def resolve_products(self, info):
+#         return ProductModel.objects.all()
 
 
 class CreateUser(graphene.Mutation):
@@ -65,9 +76,27 @@ class CreateCategory(graphene.Mutation):
         )        
 
 
+# class CreateProduct(graphene.Mutation):
+#     id = graphene.Int()
+#     product_name = graphene.String()    
+
+#     class Arguments:
+#         product_name = graphene.String()
+       
+#     def mutate(self, info, product_name):
+#         product = ProductModel(product_name=product_name)
+#         product.save()
+
+#         return CreateProduct(
+#             id=product.id,
+#             product_name=product.product_name,
+#         )        
+
+
 class Mutation(graphene.ObjectType):
     create_user = CreateUser.Field()
     create_category = CreateCategory.Field()
+    #create_product = CreateProduct.Field()
 
 
 schema = graphene.Schema(

@@ -18,3 +18,11 @@ class CategoryModel(models.Model):
     def __str__(self):
         """String for representing the Model object (in Admin site etc.)"""
         return "%s" %(self.category_name) 
+
+class ProductModel(models.Model):
+    product_name = models.CharField(max_length=100)
+
+    def __str__(self):
+        """String for representing the Model object (in Admin site etc.)"""
+        return "%s" %(self.product_name)
+
