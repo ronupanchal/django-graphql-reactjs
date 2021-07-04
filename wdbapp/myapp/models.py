@@ -6,6 +6,9 @@ from django.db import models
 class UserModel(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
+    mobile = models.CharField(max_length=15)
+    email = models.CharField(max_length=100)
+    password = models.CharField(max_length=20)
 
     def __str__(self):
         """String for representing the Model object (in Admin site etc.)"""
@@ -26,3 +29,12 @@ class ProductModel(models.Model):
         """String for representing the Model object (in Admin site etc.)"""
         return "%s" %(self.product_name)
 
+class SkillModel(models.Model):
+    skill_name = models.CharField(max_length=100)
+    
+
+class EducationModel(models.Model):
+    qualification_name = models.CharField(max_length=100)
+
+
+#https://docs.graphene-python.org/projects/django/en/latest/tutorial-plain/

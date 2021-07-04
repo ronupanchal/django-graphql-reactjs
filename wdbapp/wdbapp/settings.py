@@ -53,6 +53,14 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# AUTHENTICATION_BACKENDS=[
+#     'django.contrib.auth.backends.ModelBackends',
+#     'social_core.backends.google.GoogleOAuth2',
+# ]
+
+# SOCIAL_AUTH_GOOGLE_KEY = '448640046177-agk7l13ovres8dkhjguvslqn90i5me0f.apps.googleusercontent.com'
+# SOCIAL_AUTH_GOOGLE_SECRET = 'UBflAGWuatX4NpAiQURiUtov'
+
 GRAPHENE = {
     'SCHEMA': 'myapp.schema.schema'
 }
